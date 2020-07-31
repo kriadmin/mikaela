@@ -10,10 +10,6 @@ export const command: ICommand = {
     args: true,
 
     async execute(message, args) {
-        if (args.length != 1) {
-            throw getUsage(name);
-        }
-
         let fetchedMsg: Message = await parseMessage(message.channel, args[0]);
 
         if (!fetchedMsg) {
