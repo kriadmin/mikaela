@@ -1,12 +1,12 @@
 import { ICommand } from '../../classes/Command';
 import { Client, DMChannel, Message, MessageEmbed, NewsChannel, TextChannel } from 'discord.js';
 import { createFooter, sendErrorEmbed } from '../../util/Style';
-import { getUsage } from '../../util/CommandUtil';
 
 export const command: ICommand = {
     name: 'messageinfo',
     description: 'Shows info of a message',
     aliases: ['message', 'msg', 'msginfo'],
+    usage: '[message]',
     args: true,
 
     async execute(message, args) {
@@ -27,9 +27,9 @@ async function sendEmbed(client: Client, message: Message) {
     embed.setDescription(message.content);
     embed.setThumbnail(message.author.avatarURL());
 
-    embed.addField('Sent by', message.author);
-    embed.addField('Message ID', `\`${message.id}\``);
-    embed.addField('Created at', message.createdAt.toUTCString());
+    embed.addField('Sent by', message.author, true);
+    embed.addField('Message ID', `\`${message.id}\``, true);
+    embed.addField('Created at', message.createdAt.toUTCString(), true);
     embed.addField('URL', message.url);
 
     if (message.editedAt) {
