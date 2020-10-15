@@ -35,6 +35,8 @@ async function init() {
 }
 
 client.on('ready', () => {
+  console.log('test')
+
   // Setup players
   client.guilds.cache.map(async guild => {
     const guildResolved = await client.guilds.fetch(guild.id)
